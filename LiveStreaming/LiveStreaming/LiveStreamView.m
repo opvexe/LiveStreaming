@@ -95,6 +95,7 @@
         _liveSession = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfigurationForQuality:LFLiveVideoQuality_Medium2]];
         _liveSession.delegate = self;
         _liveSession.preView  = self;
+        [_liveSession setRunning:YES];
     }
     return _liveSession;
 }
@@ -102,7 +103,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.backgroundColor = [UIColor clearColor];
-     
+        
         [self addSubview:self.backView];
         [_backView addSubview:self.stateLabel];
         [_backView addSubview:self.closeButton];
@@ -110,8 +111,6 @@
         [_backView addSubview:self.beautyButton];
         [_backView addSubview:self.startLiveButton];
         [self snap];
-        
-        [self.liveSession setRunning:YES];
     }
     return self;
 }
